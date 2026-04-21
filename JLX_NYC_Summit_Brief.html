@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durable Skills in the Age of AI – JLX Summit Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF6E00;
+    --charcoal: #293133;
+    --purple: #831A78;
+    --mint: #46F3BB;
+    --light-gray: #E9EDEE;
+    --text: #1A1A1A;
+    --muted: #666;
+    --rule: #FF6E00;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: var(--text);
+    background: white;
+    line-height: 1.45;
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto;
+    padding: 0.65in 0.75in 0.6in;
+    background: white;
+  }
+
+  /* Header */
+  .doc-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .wordmark { font-size: 10pt; font-weight: 800; color: var(--charcoal); }
+  .wordmark span { color: var(--orange); }
+  .doc-header .label { font-size: 8.5pt; color: #999; }
+
+  .rule-thick {
+    height: 3px;
+    background: var(--orange);
+    margin-bottom: 12px;
+  }
+  .rule-thin {
+    height: 1px;
+    background: #ddd;
+    margin: 10px 0;
+  }
+
+  /* Title */
+  .title-block { margin-bottom: 12px; }
+  .title-block h1 {
+    font-size: 24pt;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .title-block .subtitle {
+    font-size: 11pt;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .title-block .meta {
+    font-size: 8.5pt;
+    color: #999;
+    margin-top: 3px;
+  }
+
+  /* Sections */
+  .section { margin-bottom: 14px; }
+  .section h2 {
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: var(--charcoal);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+  }
+  p { margin-bottom: 5px; }
+
+  .research-q {
+    font-weight: 700;
+    color: var(--charcoal);
+    font-size: 9.5pt;
+    border-left: 3px solid var(--orange);
+    padding: 6px 10px;
+    background: #fff8f3;
+    margin: 6px 0;
+    line-height: 1.4;
+  }
+
+  /* Data provocation */
+  .provocation {
+    margin: 7px 0;
+    border: 1px solid var(--orange);
+    background: #fff8f3;
+    padding: 8px 10px;
+  }
+  .provoc-data {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 7px;
+  }
+  .provoc-col { text-align: center; }
+  .provoc-rank {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 3px;
+  }
+  .rank-num {
+    font-size: 18pt;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .rank-label {
+    font-size: 7.5pt;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .provoc-skill {
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.3;
+  }
+  .provoc-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .gap-line {
+    width: 1px;
+    height: 14px;
+    background: var(--orange);
+    opacity: 0.4;
+  }
+  .gap-label {
+    font-size: 7pt;
+    color: var(--orange);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .gap-label span { font-weight: 400; color: var(--muted); }
+  .provoc-q {
+    font-size: 8pt;
+    font-style: italic;
+    color: var(--charcoal);
+    border-top: 1px solid #f0d5c0;
+    padding-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* Agenda */
+  .agenda { margin: 7px 0; display: flex; flex-direction: column; gap: 4px; }
+  .agenda-item { display: grid; grid-template-columns: 72px 1fr; gap: 8px; align-items: baseline; }
+  .agenda-time {
+    font-size: 8pt;
+    font-weight: 800;
+    color: white;
+    background: var(--charcoal);
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+  .agenda-desc { font-size: 8.5pt; color: var(--text); line-height: 1.45; }
+
+  /* Summit two-col layout */
+  .summit-layout {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 14px;
+    align-items: start;
+  }
+
+  /* Skills box */
+  .skills-box {
+    border: 1px solid #ddd;
+    background: var(--light-gray);
+    padding: 8px 10px;
+  }
+  .skills-label {
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .skills-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .skills-box li {
+    font-size: 8.5pt;
+    color: var(--text);
+    line-height: 1.6;
+    padding-left: 10px;
+    position: relative;
+  }
+  .skills-box li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+  }
+
+  /* Timeline */
+  .timeline { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 8.5pt; }
+  .timeline td { padding: 5px 8px; border: 1px solid #ddd; vertical-align: top; }
+  .timeline .date {
+    background: var(--charcoal);
+    color: white;
+    font-weight: 700;
+    white-space: nowrap;
+    width: 56px;
+  }
+  .timeline .label { font-weight: 700; color: var(--charcoal); }
+  .timeline .desc { color: var(--muted); }
+  .timeline tr.summit .date { background: var(--orange); }
+  .timeline tr.summit td:last-child { background: #fff8f3; }
+  .timeline tr.summit .label { color: var(--orange); }
+
+  /* Two-col layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Partners table */
+  .partners { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin: 6px 0; }
+  .partners td { padding: 5px 8px; border: 1px solid #ddd; vertical-align: top; }
+  .partners .sector {
+    background: var(--charcoal);
+    color: white;
+    font-weight: 700;
+    width: 30%;
+  }
+
+  /* Status bullets */
+  .status-list { list-style: none; margin: 4px 0; }
+  .status-list li {
+    padding: 2px 0 2px 14px;
+    position: relative;
+    font-size: 8.5pt;
+    color: var(--text);
+  }
+  .status-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  .closing {
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 8.5pt;
+  }
+
+  .doc-footer {
+    margin-top: 14px;
+    padding-top: 8px;
+    border-top: 2px solid var(--orange);
+    font-size: 8pt;
+    color: #999;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; padding: 0.6in 0.7in; width: 100%; }
+    @page { size: letter; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="doc-header">
+    <div class="wordmark">Jackrabbit<span>LX</span></div>
+    <div class="label">Planning Brief</div>
+  </div>
+  <div class="rule-thick"></div>
+
+  <!-- Title -->
+  <div class="title-block">
+    <h1>Durable Skills in the Age of AI</h1>
+    <div class="subtitle">A Skills Summit for Learning Professionals</div>
+    <div class="meta">New York City &nbsp;|&nbsp; June 18, 2026 &nbsp;|&nbsp; Organized by JLX</div>
+  </div>
+  <div class="rule-thin"></div>
+
+  <!-- Two-column layout for top sections -->
+  <div class="two-col">
+
+    <!-- Left: Survey -->
+    <div class="section">
+      <h2>The Survey and the Report</h2>
+      <p>JLX launched the Future of Learning Professionals Industry Skills Survey to answer one question:</p>
+      <div class="research-q">What skills and professional development do learning professionals believe they need within the next three years to remain effective as AI reshapes design, delivery, and strategy?</div>
+      <p>Respondents assessed nine skill areas and reflected on the gap between their own priorities and their employer's. The survey reached learning professionals across higher education, K-12, corporate, government, nonprofit, consulting, and association sectors.</p>
+      <div class="provocation">
+        <div class="provoc-data">
+          <div class="provoc-col">
+            <div class="provoc-rank">
+              <span class="rank-num">#1</span>
+              <span class="rank-label">Practitioners rank</span>
+            </div>
+            <div class="provoc-skill">Learning Strategy &amp; Design Thinking</div>
+          </div>
+          <div class="provoc-divider">
+            <div class="gap-line"></div>
+            <div class="gap-label">0.53 pt gap<br><span>n=133</span></div>
+            <div class="gap-line"></div>
+          </div>
+          <div class="provoc-col">
+            <div class="provoc-rank">
+              <span class="rank-num">#5</span>
+              <span class="rank-label">Employers rank</span>
+            </div>
+            <div class="provoc-skill">Learning Strategy &amp; Design Thinking</div>
+          </div>
+        </div>
+        <div class="provoc-q">Learning professionals believe their highest-value skill is the one their organizations most consistently undervalue.</div>
+      </div>
+    </div>
+
+    <!-- Right: Timeline -->
+    <div class="section">
+      <h2>From Survey to Summit</h2>
+      <p>The survey, report, and summit are one connected initiative:</p>
+      <table class="timeline">
+        <tr>
+          <td class="date">Apr 19</td>
+          <td><span class="label">Wave 1 closes.</span> <span class="desc">Initial data collection ends.</span></td>
+        </tr>
+        <tr>
+          <td class="date">Apr 24</td>
+          <td><span class="label">Wave 1 pre-report.</span> <span class="desc">First findings published.</span></td>
+        </tr>
+        <tr>
+          <td class="date">May 11</td>
+          <td><span class="label">Full survey closes.</span> <span class="desc">Final data collection across all sectors.</span></td>
+        </tr>
+        <tr>
+          <td class="date">May 15</td>
+          <td><span class="label">Full industry report.</span> <span class="desc">Complete findings published and distributed to all participants.</span></td>
+        </tr>
+        <tr class="summit">
+          <td class="date">Jun 18</td>
+          <td><span class="label">NYC Summit.</span> <span class="desc">Attendees arrive having read the report. The day is spent working with the data -- pressure-testing findings, surfacing disagreements, and building a skills roadmap together.</span></td>
+        </tr>
+      </table>
+      <p style="font-style:italic; color: var(--muted); font-size:8.5pt;">The report does not end the conversation. The summit is where the profession does something with it.</p>
+    </div>
+
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <!-- Summit format -->
+  <div class="section">
+    <h2>The Summit</h2>
+    <div class="summit-layout">
+      <div class="summit-text">
+        <p>An application-based gathering of up to 100 learning professionals, 9 AM to 4 PM, with an optional informal dinner after. Two key audiences: senior thought leaders and practitioners presenting and participating, and younger emerging professionals including graduate students. The application process will balance both groups across sector, background, and career stage.</p>
+        <div class="agenda">
+          <div class="agenda-item">
+            <div class="agenda-time">Morning</div>
+            <div class="agenda-desc">Four to five curated talks selected through a competitive pitch process, with structured table discussion between sessions.</div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">Midday</div>
+            <div class="agenda-desc">Assigned lunch -- attendees connect with someone outside their usual context. Cross-pollination, not networking.</div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">Afternoon</div>
+            <div class="agenda-desc">Working session. Small groups use the report data to build a draft skills roadmap -- a tangible output that feeds the 2027 national conference.</div>
+          </div>
+        </div>
+        <p style="margin-top:6px;">This is a Northeast regional event. The model is local and repeatable.</p>
+      </div>
+      <div class="skills-box">
+        <div class="skills-label">Nine skill areas under the lens:</div>
+        <ul>
+          <li>Learning strategy &amp; design thinking</li>
+          <li>Content development</li>
+          <li>Facilitation and delivery</li>
+          <li>Learning technology</li>
+          <li>AI tools and automation</li>
+          <li>Data analysis and reporting</li>
+          <li>Storytelling and narrative design</li>
+          <li>Stakeholder influence &amp; strategic communication</li>
+          <li>Change management &amp; org development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-thin"></div>
+
+  <!-- Two-col: Partners + Status -->
+  <div class="two-col">
+
+    <!-- Partners -->
+    <div class="section">
+      <h2>Who We Are Building This With</h2>
+      <p>We are seeking one or two community partners per sector. Technology vendors are welcome as sponsors.</p>
+      <table class="partners">
+        <tr>
+          <td class="sector">Higher Education</td>
+          <td>Universities, academic programs, and faculty development organizations.</td>
+        </tr>
+        <tr>
+          <td class="sector">K-12</td>
+          <td>Teachers, instructional coaches, and curriculum designers in schools and districts.</td>
+        </tr>
+        <tr>
+          <td class="sector">Corporate L&amp;D</td>
+          <td>Workplace learning teams and talent development functions inside organizations.</td>
+        </tr>
+        <tr>
+          <td class="sector">Association &amp; Membership Ed</td>
+          <td>Learning professionals running PD, conferences, and LMS platforms inside professional associations -- medical, legal, trade, and beyond.</td>
+        </tr>
+        <tr>
+          <td class="sector">Consulting &amp; Independent</td>
+          <td>Freelance instructional designers, learning consultants, and independent practitioners.</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Status -->
+    <div class="section">
+      <h2>Where Things Stand</h2>
+      <p>This event is in development but almost nothing is locked down yet.</p>
+      <ul class="status-list">
+        <li>Wave 1 survey closes April 19 -- promotion active now</li>
+        <li>Summit date and city very likely confirmed: June 18, New York City</li>
+        <li>Venue search active</li>
+        <li>Speaker outreach and sponsor conversations begin next week</li>
+        <li>Speaker and attendee application processes in design</li>
+        <li>Community partner conversations just beginning</li>
+      </ul>
+      <p class="closing">If this sits close to your work, we would welcome a conversation.</p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="doc-footer">
+    Questions? &nbsp;<a href="mailto:james@jackrabbitlx.com" style="color: var(--orange); text-decoration: none;">james@jackrabbitlx.com</a>
+  </div>
+
+</div>
+</body>
+</html>
