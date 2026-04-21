@@ -1,0 +1,338 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
+:root{--o:#FF6E00;--p:#831A78;--m:#46F3BB;--md:#1A7A60;--ch:#293133;--lg:#E9EDEE;--f:'Open Sans',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+.w{background:var(--lg);font-family:var(--f);padding:26px 20px 22px;border-radius:8px}
+.ey{text-align:center;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--o);margin-bottom:4px}
+.tt{text-align:center;font-size:20px;font-weight:800;color:var(--ch);margin-bottom:3px}
+.st{text-align:center;font-size:12px;color:#666;margin-bottom:16px}
+.ab{height:3px;background:linear-gradient(90deg,var(--p),var(--o));border-radius:2px;margin-bottom:14px}
+.lgrow{display:flex;justify-content:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.lp{display:flex;align-items:center;gap:6px;font-size:11px;color:#555;cursor:pointer;padding:5px 10px;border-radius:20px;border:1px solid transparent;transition:background .15s,border-color .15s;font-family:var(--f);font-weight:600;background:none;white-space:nowrap}
+.lp:hover{background:rgba(0,0,0,.05)}
+.lp.on{background:#fff;border-color:#ddd}
+.ld{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.panel{background:#fff;border-radius:8px;margin-top:14px;overflow:hidden;max-height:0;opacity:0;transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .3s}
+.panel.open{max-height:700px;opacity:1}
+.ph{padding:16px 18px 0;display:flex;align-items:flex-start;gap:12px}
+.pbar{width:4px;min-height:46px;border-radius:2px;flex-shrink:0;margin-top:2px}
+.ptitle{font-size:15px;font-weight:800;margin-bottom:2px}
+.ptag{font-size:12px;color:#666;line-height:1.45}
+.tabs{display:flex;border-bottom:1px solid #eee;margin:12px 18px 0;gap:2px}
+.tb{font-family:var(--f);font-size:12px;font-weight:700;padding:8px 14px;background:none;border:none;border-bottom:2.5px solid transparent;color:#aaa;cursor:pointer;transition:color .2s,border-color .2s;white-space:nowrap}
+.tb.on{color:var(--ch);border-bottom-color:var(--o)}
+.tb:hover:not(.on){color:#666}
+.tc{display:none;padding:15px 18px 18px}
+.tc.on{display:block}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cd{background:var(--lg);border-radius:6px;padding:12px 14px}
+.cl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:8px}
+.ci{font-size:12px;color:#333;line-height:1.8;padding-left:12px;position:relative;word-break:break-word}
+.ci::before{content:'—';position:absolute;left:0;color:#ccc;font-size:10px;top:3px}
+.ci strong{font-weight:700;color:#293133}
+.cn{font-size:11px;color:#888;margin-top:9px;padding-top:9px;border-top:1px solid #ddd;font-style:italic;line-height:1.55;word-break:break-word}
+.sc{background:var(--lg);border-radius:6px;padding:12px 12px;border-top:3px solid}
+.sn{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;opacity:.75}
+.sk{font-size:12px;font-weight:700;color:var(--ch);margin-bottom:5px;line-height:1.3}
+.sd{font-size:11px;color:#555;line-height:1.55;word-break:break-word}
+.qb{background:var(--lg);border-radius:6px;padding:16px 17px;border-left:4px solid var(--md)}
+.qt{font-size:14px;font-weight:700;color:var(--ch);line-height:1.7;margin-bottom:10px}
+.qs{font-size:13px;font-style:italic;color:#444;margin-bottom:10px;line-height:1.5}
+.qn{font-size:11px;color:#777;line-height:1.55;word-break:break-word}
+.bl{display:flex;justify-content:flex-end;margin-top:15px;font-size:11px;font-weight:800;color:var(--ch)}
+.lx{color:var(--o)}
+svg g[id^=z]{cursor:pointer}
+</style>
+
+<div class="w">
+  <div class="ey">AI Forum 2027 · Conference Framework</div>
+  <div class="tt">The Future Learning Professional</div>
+  <div class="st">Where AI fluency meets the skills that have always mattered</div>
+  <div class="ab"></div>
+
+  <div class="lgrow">
+    <button class="lp" id="btn-left" onclick="pick('left')">
+      <div class="ld" style="background:var(--o)"></div>AI &amp; technical skills
+    </button>
+    <button class="lp" id="btn-center" onclick="pick('center')">
+      <div class="ld" style="background:var(--m);outline:1px solid #aaa;outline-offset:0"></div>The intersection
+    </button>
+    <button class="lp" id="btn-right" onclick="pick('right')">
+      <div class="ld" style="background:var(--p)"></div>Durable skills
+    </button>
+  </div>
+
+  <svg id="venn" width="100%" viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="lh"><rect x="0" y="0" width="340" height="310"/></clipPath>
+      <clipPath id="rh"><rect x="340" y="0" width="340" height="310"/></clipPath>
+      <clipPath id="rc"><circle cx="420" cy="155" r="138"/></clipPath>
+    </defs>
+
+    <circle cx="260" cy="155" r="138" fill="#FF6E00" fill-opacity="0.12" clip-path="url(#lh)"/>
+    <circle cx="420" cy="155" r="138" fill="#831A78" fill-opacity="0.11" clip-path="url(#rh)"/>
+    <circle cx="260" cy="155" r="138" fill="#46F3BB" fill-opacity="0.32" clip-path="url(#rc)"/>
+    <circle cx="260" cy="155" r="138" fill="none" stroke="#FF6E00" stroke-width="1.5" stroke-opacity="0.6"/>
+    <circle cx="420" cy="155" r="138" fill="none" stroke="#831A78" stroke-width="1.5" stroke-opacity="0.55"/>
+    <circle id="rl" cx="260" cy="155" r="138" fill="none" stroke="#FF6E00" stroke-width="3" opacity="0" style="transition:opacity .25s;pointer-events:none"/>
+    <circle id="rr" cx="420" cy="155" r="138" fill="none" stroke="#831A78" stroke-width="3" opacity="0" style="transition:opacity .25s;pointer-events:none"/>
+
+    <!-- LEFT zone · text center x=218 · max line ~18 chars at 11px -->
+    <g id="zl" onclick="pick('left')">
+      <rect x="50" y="17" width="238" height="278" rx="4" fill="transparent"/>
+      <text font-family="'Open Sans',Arial,sans-serif" font-weight="800" font-size="13" fill="#293133" text-anchor="middle" x="218" y="82">AI &amp; Technical</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-weight="800" font-size="13" fill="#293133" text-anchor="middle" x="218" y="99">Skills</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#FF6E00" font-weight="700" text-anchor="middle" x="218" y="126">Prompting &amp; AI</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle" x="218" y="143">LMS &amp; authoring</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle" x="218" y="160">Data &amp; analytics</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle" x="218" y="177">Learning technology</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle" x="218" y="194">AI content creation</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="10" fill="#999" text-anchor="middle" x="218" y="222">evolves every 2–3 years</text>
+      <text id="hint-l" font-family="'Open Sans',Arial,sans-serif" font-size="10.5" fill="#FF6E00" font-weight="600" text-anchor="middle" x="218" y="248">tap to explore ↓</text>
+    </g>
+
+    <!-- RIGHT zone · text center x=462 · max line ~18 chars at 11px -->
+    <g id="zr" onclick="pick('right')">
+      <rect x="392" y="17" width="238" height="278" rx="4" fill="transparent"/>
+      <text font-family="'Open Sans',Arial,sans-serif" font-weight="800" font-size="13" fill="#293133" text-anchor="middle" x="462" y="82">Durable Skills</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#831A78" font-weight="700" text-anchor="middle" x="462" y="116">Narrative craft</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle" x="462" y="133">Human understanding</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle" x="462" y="150">Judgment</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle" x="462" y="167">Relational capacity</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle" x="462" y="184">Sense-making</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="10" fill="#999" text-anchor="middle" x="462" y="212">compounds over a career</text>
+      <text id="hint-r" font-family="'Open Sans',Arial,sans-serif" font-size="10.5" fill="#831A78" font-weight="600" text-anchor="middle" x="462" y="236">tap to explore ↓</text>
+    </g>
+
+    <!-- CENTER zone · text center x=340 · max line ~12 chars at 12px -->
+    <g id="zc" onclick="pick('center')">
+      <rect x="287" y="55" width="106" height="205" fill="transparent"/>
+      <text font-family="'Open Sans',Arial,sans-serif" font-weight="800" font-size="12" fill="#293133" text-anchor="middle" x="340" y="116">Future</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-weight="800" font-size="12" fill="#293133" text-anchor="middle" x="340" y="131">Learning</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-weight="800" font-size="12" fill="#293133" text-anchor="middle" x="340" y="146">Professional</text>
+      <line x1="308" y1="153" x2="372" y2="153" stroke="#46F3BB" stroke-width="2.5" stroke-linecap="round"/>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="9.5" fill="#1A7A60" font-weight="700" text-anchor="middle" x="340" y="169">the conference</text>
+      <text font-family="'Open Sans',Arial,sans-serif" font-size="9.5" fill="#1A7A60" font-weight="700" text-anchor="middle" x="340" y="181">lives here</text>
+      <text id="hint-c" font-family="'Open Sans',Arial,sans-serif" font-size="9.5" fill="#1A7A60" text-anchor="middle" x="340" y="201">tap ↓</text>
+    </g>
+  </svg>
+
+  <div class="panel" id="panel">
+    <div class="ph">
+      <div class="pbar" id="pbar"></div>
+      <div><div class="ptitle" id="ptitle"></div><div class="ptag" id="ptag"></div></div>
+    </div>
+    <div class="tabs" id="tabrow"></div>
+    <div id="tcont"></div>
+  </div>
+
+  <div class="bl">Jackrabbit<span class="lx">LX</span>&nbsp;·&nbsp;AI Forum</div>
+</div>
+
+<script>
+const D={
+  left:{
+    color:'#FF6E00',
+    title:'AI & Technical Skills',
+    tag:'What we have to learn — and keep relearning as the tools keep changing',
+    tabs:['What it is','Why it matters','At the conference'],
+    c:[
+      `<div class="g2">
+        <div class="cd">
+          <div class="cl" style="color:#FF6E00">Skills in this domain</div>
+          <div class="ci">Prompting &amp; AI tool use</div>
+          <div class="ci">Evaluating AI-generated content</div>
+          <div class="ci">AI-assisted course creation</div>
+          <div class="ci">LMS &amp; authoring platforms</div>
+          <div class="ci">Data, analytics &amp; measurement</div>
+        </div>
+        <div class="cd">
+          <div class="cl" style="color:#FF6E00">What's changing fast</div>
+          <div class="ci">Generative AI in every tool</div>
+          <div class="ci">AI-native course authoring</div>
+          <div class="ci">Automated personalization</div>
+          <div class="ci">Skills-based talent platforms</div>
+          <div class="cn">Shelf life: 2–3 years. Mastery today is table stakes tomorrow.</div>
+        </div>
+      </div>`,
+      `<div class="g2">
+        <div class="cd">
+          <div class="cl" style="color:#FF6E00">The risk of avoiding it</div>
+          <div class="ci">Practitioners who avoid AI fall behind</div>
+          <div class="ci">Clients already expect AI fluency</div>
+          <div class="ci">AI-assisted peers outproduce non-users</div>
+          <div class="ci">The gap widens every quarter</div>
+        </div>
+        <div class="cd">
+          <div class="cl" style="color:#FF6E00">The opportunity</div>
+          <div class="ci">AI amplifies strong foundations</div>
+          <div class="ci">Fluency transfers across tools</div>
+          <div class="ci">Early adopters shape how AI gets used</div>
+          <div class="cn">The goal isn't every tool — it's knowing how to learn the next one.</div>
+        </div>
+      </div>`,
+      `<div class="g3">
+        <div class="sc" style="border-top-color:#FF6E00">
+          <div class="sn" style="color:#FF6E00">Session type</div>
+          <div class="sk">Hands-on workshops</div>
+          <div class="sd">Live practice with AI tools — prompting, authoring, output evaluation. No demo-only sessions.</div>
+        </div>
+        <div class="sc" style="border-top-color:#FF6E00">
+          <div class="sn" style="color:#FF6E00">Session type</div>
+          <div class="sk">Tool showcases</div>
+          <div class="sd">Curated review of what's worth adopting — honest critique, no vendor pitches.</div>
+        </div>
+        <div class="sc" style="border-top-color:#FF6E00">
+          <div class="sn" style="color:#FF6E00">Session type</div>
+          <div class="sk">Field data</div>
+          <div class="sd">What the skills survey reveals about AI adoption, fear, and the divide in the profession.</div>
+        </div>
+      </div>`
+    ]
+  },
+  right:{
+    color:'#831A78',
+    title:'Durable Skills',
+    tag:'What we already know — the foundation AI cannot replace',
+    tabs:['The 5 domains','Why durable','At the conference'],
+    c:[
+      `<div class="g2">
+        <div class="cd">
+          <div class="cl" style="color:#831A78">The domains</div>
+          <div class="ci"><strong>Narrative intelligence</strong> — shaping complexity into meaning</div>
+          <div class="ci"><strong>Human understanding</strong> — learning science &amp; empathy as design</div>
+          <div class="ci"><strong>Judgment</strong> — decisions under ambiguity</div>
+          <div class="ci"><strong>Relational capacity</strong> — trust, influence, facilitation</div>
+          <div class="ci"><strong>Synthesis</strong> — clarity from complexity</div>
+        </div>
+        <div class="cd">
+          <div class="cl" style="color:#831A78">What they share</div>
+          <div class="ci">Not tool-dependent</div>
+          <div class="ci">Compound with experience</div>
+          <div class="ci">Harder to automate</div>
+          <div class="ci">Differentiate great from good</div>
+          <div class="cn">No expiration date. Every year of practice makes them stronger — and more AI-proof.</div>
+        </div>
+      </div>`,
+      `<div class="g2">
+        <div class="cd">
+          <div class="cl" style="color:#831A78">AI generates. Humans shape.</div>
+          <div class="ci">AI creates content — humans create meaning</div>
+          <div class="ci">AI proposes options — judgment chooses</div>
+          <div class="ci">AI drafts — narrative intelligence edits for truth</div>
+          <div class="ci">AI scales — relationships still build trust</div>
+        </div>
+        <div class="cd">
+          <div class="cl" style="color:#831A78">The gap in the landscape</div>
+          <div class="ci">WEF Future of Jobs cites all 5 domains</div>
+          <div class="ci">No framework names them for L&D</div>
+          <div class="ci">Narrative intelligence exists nowhere as a named primary domain</div>
+          <div class="cn">This is the report's contribution — and the conference's intellectual spine.</div>
+        </div>
+      </div>`,
+      `<div class="g3">
+        <div class="sc" style="border-top-color:#831A78">
+          <div class="sn" style="color:#831A78">Session type</div>
+          <div class="sk">Story &amp; narrative</div>
+          <div class="sd">Storytelling as craft — practical, transferable, not a personality trait.</div>
+        </div>
+        <div class="sc" style="border-top-color:#831A78">
+          <div class="sn" style="color:#831A78">Session type</div>
+          <div class="sk">Design practice</div>
+          <div class="sd">Human-centered design applied to learning — empathy, co-design, "design with."</div>
+        </div>
+        <div class="sc" style="border-top-color:#831A78">
+          <div class="sn" style="color:#831A78">Session type</div>
+          <div class="sk">Judgment sessions</div>
+          <div class="sd">Case-based work on ambiguity, difficult stakeholders, and incomplete data.</div>
+        </div>
+      </div>`
+    ]
+  },
+  center:{
+    color:'#1A7A60',
+    title:'The Future Learning Professional',
+    tag:"Where this conference lives — and who it's for",
+    tabs:['The profile','The conference','The promise'],
+    c:[
+      `<div class="g2">
+        <div class="cd">
+          <div class="cl" style="color:#1A7A60">What they can do</div>
+          <div class="ci">Use AI to move faster without losing craft</div>
+          <div class="ci">Evaluate AI output with trained judgment</div>
+          <div class="ci">Tell better stories because AI handles scaffolding</div>
+          <div class="ci">Design for humans with AI as collaborator</div>
+          <div class="ci">Lead through uncertainty rather than wait it out</div>
+        </div>
+        <div class="cd">
+          <div class="cl" style="color:#1A7A60">Who they are</div>
+          <div class="ci">Learning &amp; instructional designers</div>
+          <div class="ci">L&amp;D managers &amp; strategists</div>
+          <div class="ci">Facilitators &amp; coaches</div>
+          <div class="ci">Anyone at the intersection of people, change &amp; knowledge</div>
+          <div class="cn">Not just L&amp;D titles — anyone motivated by cross-silo knowledge work.</div>
+        </div>
+      </div>`,
+      `<div class="g3">
+        <div class="sc" style="border-top-color:#FF6E00">
+          <div class="sn" style="color:#FF6E00">Part one</div>
+          <div class="sk">What the data says</div>
+          <div class="sd">The skills survey as intellectual backbone — field intelligence from practitioners worldwide.</div>
+        </div>
+        <div class="sc" style="border-top-color:#831A78">
+          <div class="sn" style="color:#831A78">Part two</div>
+          <div class="sk">What we know how to do</div>
+          <div class="sd">Durable skills, storytelling, human-centered design — the foundation we already have.</div>
+        </div>
+        <div class="sc" style="border-top-color:#1A7A60">
+          <div class="sn" style="color:#1A7A60">Part three</div>
+          <div class="sk">What we have to learn</div>
+          <div class="sd">AI fluency and hands-on practice — the workflows reshaping the profession right now.</div>
+        </div>
+      </div>`,
+      `<div class="qb">
+        <div class="cl" style="color:#1A7A60">The positioning</div>
+        <div class="qt">"A conference by learning professionals, for learning professionals, at the moment when we have to learn more than ever before."</div>
+        <div class="qs">The cobbler's children must finally get the shoes they deserve.</div>
+        <div class="qn">The irony is the point — the people who design learning for everyone else have been last in line for it themselves. This conference changes that.</div>
+      </div>`
+    ]
+  }
+};
+
+let cur=null;
+
+function pick(z){
+  const panel=document.getElementById('panel');
+  ['left','center','right'].forEach(k=>{
+    const btn=document.getElementById('btn-'+k);
+    if(btn) btn.classList.toggle('on',k===z&&cur!==z);
+  });
+  document.getElementById('rl').setAttribute('opacity',z==='left'&&cur!==z?'0.8':'0');
+  document.getElementById('rr').setAttribute('opacity',z==='right'&&cur!==z?'0.8':'0');
+  document.getElementById('hint-l').setAttribute('opacity',z==='left'&&cur!==z?'0':'1');
+  document.getElementById('hint-r').setAttribute('opacity',z==='right'&&cur!==z?'0':'1');
+  document.getElementById('hint-c').setAttribute('opacity',z==='center'&&cur!==z?'0':'1');
+  if(cur===z){
+    panel.classList.remove('open');
+    cur=null;
+    return;
+  }
+  cur=z;
+  const d=D[z];
+  document.getElementById('pbar').style.background=d.color;
+  document.getElementById('ptitle').textContent=d.title;
+  document.getElementById('ptitle').style.color=d.color;
+  document.getElementById('ptag').textContent=d.tag;
+  document.getElementById('tabrow').innerHTML=d.tabs.map((t,i)=>`<button class="tb${i===0?' on':''}" onclick="st(${i})">${t}</button>`).join('');
+  document.getElementById('tcont').innerHTML=d.c.map((c,i)=>`<div class="tc${i===0?' on':''}">${c}</div>`).join('');
+  panel.classList.add('open');
+}
+
+function st(i){
+  document.querySelectorAll('.tb').forEach((b,j)=>b.classList.toggle('on',j===i));
+  document.querySelectorAll('.tc').forEach((c,j)=>c.classList.toggle('on',j===i));
+}
+</script>
