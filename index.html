@@ -116,12 +116,40 @@
   .card.purple .card-cta { color: var(--jlx-purple); }
   .card.navy .card-cta { color: var(--jlx-navy); }
 
+  .sectors { margin: 32px 0 40px; }
+  .sectors-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--jlx-muted);
+    margin-bottom: 14px;
+  }
+  .sector-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .sector-tile {
+    background: var(--jlx-white);
+    border-left: 3px solid var(--jlx-orange);
+    border-radius: 0 4px 4px 0;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .sector-icon { font-size: 20px; line-height: 1; flex-shrink: 0; }
+  .sector-name { font-size: 13px; font-weight: 700; color: var(--jlx-charcoal); line-height: 1.3; }
+
   .foot { font-size: 11px; color: var(--jlx-muted); letter-spacing: 0.04em; line-height: 1.6; text-align: center; margin-top: 60px; }
 
   @media (max-width: 640px) {
     .headline { font-size: 28px; }
     .bigger-picture { padding: 24px; }
     .bigger-picture p { font-size: 15px; }
+    .sector-grid { grid-template-columns: repeat(2, 1fr); }
     .cards { grid-template-columns: 1fr; }
   }
 </style>
@@ -140,6 +168,18 @@
   <div class="bigger-picture">
     <h2>The bigger picture</h2>
     <p>AI may be the first force in a generation that genuinely levels the playing field across sectors. Across corporate learning, higher education, K-12, consulting, association management, and workforce development, we are all trying to figure out our future. Nobody has the full answer, yet. That's why we think we should do this together.</p>
+  </div>
+
+  <div class="sectors">
+    <div class="sectors-label">Who this is for</div>
+    <div class="sector-grid">
+      <div class="sector-tile"><div class="sector-icon">🏢</div><div class="sector-name">Corporate Learning</div></div>
+      <div class="sector-tile"><div class="sector-icon">🎓</div><div class="sector-name">Higher Education</div></div>
+      <div class="sector-tile"><div class="sector-icon">✏️</div><div class="sector-name">K-12</div></div>
+      <div class="sector-tile"><div class="sector-icon">💡</div><div class="sector-name">Consulting</div></div>
+      <div class="sector-tile"><div class="sector-icon">🤝</div><div class="sector-name">Association Mgmt</div></div>
+      <div class="sector-tile"><div class="sector-icon">🔧</div><div class="sector-name">Workforce Development</div></div>
+    </div>
   </div>
 
   <div class="cards">
