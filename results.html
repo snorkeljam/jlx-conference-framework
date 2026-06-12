@@ -34,9 +34,10 @@
   .logo .lx { color: var(--jlx-orange); }
   .kicker { margin-left: auto; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--jlx-muted); font-weight: 700; }
 
-  .breadcrumb { font-size: 12px; color: var(--jlx-muted); margin-bottom: 32px; }
-  .breadcrumb a { color: var(--jlx-orange); text-decoration: none; font-weight: 700; }
-  .breadcrumb a:hover { text-decoration: underline; }
+  .site-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 32px; }
+  .site-nav a { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--jlx-muted); padding: 7px 12px; border-radius: 4px; transition: background 0.15s, color 0.15s; }
+  .site-nav a:hover { background: var(--jlx-white); color: var(--jlx-charcoal); }
+  .site-nav a.current { background: var(--jlx-charcoal); color: var(--jlx-white); }
 
   /* Intro */
   .intro-block {
@@ -166,7 +167,11 @@
     <div class="kicker">JLX Convening Cross-Sector Learning Professionals</div>
   </header>
 
-  <p class="breadcrumb"><a href="index.html">← Back to overview</a></p>
+  <nav class="site-nav">
+    <a href="index.html">Overview</a>
+    <a href="results.html" class="current">Explore the Results</a>
+    <a href="summit-brief.html">Future Skills Summit</a>
+  </nav>
 
   <div class="intro-block">
     <p>AI may be the first force in a generation that genuinely levels the playing field across sectors. We ran this survey because we believe corporate learning, higher education, K-12, consulting, association management, and workforce development should be figuring this out together, and that practitioners, not vendors, should be driving the conversation.</p>

@@ -42,6 +42,11 @@
   .logo .lx { color: var(--jlx-orange); }
   .kicker { margin-left: auto; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--jlx-muted); font-weight: 700; }
 
+  .site-nav { display: flex; gap: 6px; flex-wrap: wrap; margin: -28px 0 40px; }
+  .site-nav a { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--jlx-muted); padding: 7px 12px; border-radius: 4px; transition: background 0.15s, color 0.15s; }
+  .site-nav a:hover { background: var(--jlx-white); color: var(--jlx-charcoal); }
+  .site-nav a.current { background: var(--jlx-charcoal); color: var(--jlx-white); }
+
   .eyebrow {
     font-size: 11px;
     font-weight: 700;
@@ -161,6 +166,12 @@
     <div class="logo">Jackrabbit<span class="lx">LX</span></div>
     <div class="kicker">2026</div>
   </header>
+
+  <nav class="site-nav">
+    <a href="index.html" class="current">Overview</a>
+    <a href="results.html">Explore the Results</a>
+    <a href="summit-brief.html">Future Skills Summit</a>
+  </nav>
 
   <div class="eyebrow">JLX Convening</div>
   <h1 class="headline">Cross-Sector<br>Learning <span class="accent">Professionals</span></h1>
