@@ -75,6 +75,8 @@
   .tier-label { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--jlx-purple); margin: 20px 0 10px; padding-top: 16px; border-top: 1px solid var(--jlx-light-gray); }
   .tier-label.first { margin-top: 0; padding-top: 0; border-top: 0; }
   .tier-label .tier-note { font-weight: 400; text-transform: none; letter-spacing: 0.02em; color: var(--jlx-muted); }
+  .skill-type { display: block; font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+  .skill-dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 8px; vertical-align: baseline; }
 
   /* ── PERCEPTION GAP ── */
   .gap-chart { background: var(--jlx-white); border-radius: 6px; padding: 28px 28px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
@@ -240,21 +242,22 @@
 </div>
 <script>
 // ── SKILL RANKINGS ──
+// Per-skill colors shared across JLX materials
 const TIERS = [
-  { name: "Tier 1", note: "Statistically tied at the top", cls: "r1", dark: false, skills: [
-    { label: "Learning strategy\n& design thinking", score: 4.48 },
-    { label: "AI tools\n& automation", score: 4.46 },
-    { label: "Stakeholder influence &\nstrategic communication", score: 4.39 },
+  { name: "Tier 1", note: "Statistically tied at the top", skills: [
+    { label: "Learning strategy\n& design thinking", score: 4.48, color: "#831A78", type: "Durable" },
+    { label: "AI tools\n& automation", score: 4.46, color: "#FF6E00", type: "Technical" },
+    { label: "Stakeholder influence &\nstrategic communication", score: 4.39, color: "#3D52D5", type: "Durable" },
   ]},
-  { name: "Tier 2", note: "Where practitioners and employers disagree", cls: "r3", dark: true, skills: [
-    { label: "Change management &\norg development", score: 4.21 },
-    { label: "Data analysis\n& reporting", score: 4.15 },
-    { label: "Storytelling &\nnarrative design", score: 4.08 },
+  { name: "Tier 2", note: "Where practitioners and employers disagree", skills: [
+    { label: "Change management &\norg development", score: 4.21, color: "#0F6E56", type: "Durable" },
+    { label: "Data analysis\n& reporting", score: 4.15, color: "#BA7517", type: "Bridge" },
+    { label: "Storytelling &\nnarrative design", score: 4.08, color: "#E0529C", type: "Durable" },
   ]},
-  { name: "Tier 3", note: "The traditional production core", cls: "r5", dark: true, skills: [
-    { label: "Learning technology\n(LMS, authoring tools)", score: 3.74 },
-    { label: "Facilitation\n& delivery", score: 3.66 },
-    { label: "Content\ndevelopment", score: 3.51 },
+  { name: "Tier 3", note: "The traditional production core", skills: [
+    { label: "Learning technology\n(LMS, authoring tools)", score: 3.74, color: "#378ADD", type: "Technical" },
+    { label: "Facilitation\n& delivery", score: 3.66, color: "#2DBA8C", type: "Durable" },
+    { label: "Content\ndevelopment", score: 3.51, color: "#B42318", type: "Technical" },
   ]},
 ];
 
@@ -265,10 +268,10 @@ document.getElementById('skill-chart').innerHTML = TIERS.map((t, ti) => {
   return head + t.skills.map(s => {
     const p = pct(s.score, 1, 5);
     return `<div class="chart-row">
-      <div class="chart-label">${s.label.replace('\n','<br>')}</div>
+      <div class="chart-label">${s.label.replace('\n','<br>')}<span class="skill-type" style="color:${s.color}">${s.type}</span></div>
       <div class="chart-bar-track">
-        <div class="chart-bar-fill ${t.cls}" style="width:${p}%">
-          <span class="chart-score${t.dark?' dark':''}">${s.score.toFixed(2)}</span>
+        <div class="chart-bar-fill" style="width:${p}%;background:${s.color}">
+          <span class="chart-score">${s.score.toFixed(2)}</span>
         </div>
       </div>
     </div>`;
@@ -279,12 +282,14 @@ document.getElementById('skill-chart').innerHTML = TIERS.map((t, ti) => {
 const GAP_DATA = [
   {
     name: "Storytelling & narrative design",
+    color: "#E0529C",
     self: 4.08, emp: 3.48, dir: "pos",
     badge: "Practitioner values it +0.60 more",
     insight: "The largest gap in the dataset, significant at p < .001. Half of respondents rated storytelling higher for themselves than for their employer; fewer than one in ten said their employer valued it more. Five times as many respondents put it higher for themselves. It was also the only skill in the dataset significantly correlated with professional confidence."
   },
   {
     name: "Data analysis & reporting",
+    color: "#BA7517",
     self: 4.15, emp: 4.31, dir: "neg",
     badge: "Employer values it 0.16 more",
     insight: "The only skill where perceived employer expectations exceeded practitioner priorities. Every other skill ran the other way. Organizations under pressure to justify learning investment gravitate toward legible outputs (dashboards, completion rates, evaluation reports). That legibility has its own organizational value, separate from whether better data actually produces better learning."
@@ -299,7 +304,7 @@ document.getElementById('gap-rows').innerHTML = GAP_DATA.map(s => {
   const left = Math.min(sp, ep);
   const width = Math.abs(sp - ep);
   return `<div class="gap-row">
-    <div class="gap-skill">${s.name}</div>
+    <div class="gap-skill"><span class="skill-dot" style="background:${s.color}"></span>${s.name}</div>
     <div class="gap-visual">
       <div class="gap-track"></div>
       <div class="gap-connector ${s.dir}" style="left:${left}%;width:${width}%"></div>

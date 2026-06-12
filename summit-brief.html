@@ -85,7 +85,7 @@
   .skills-label { font-size: 8pt; font-weight: 700; color: var(--charcoal); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.03em; }
   .skills-box ul { list-style: none; }
   .skills-box li { font-size: 8.5pt; color: var(--text); line-height: 1.6; padding-left: 10px; position: relative; }
-  .skills-box li::before { content: "–"; position: absolute; left: 0; color: var(--orange); }
+  .skills-box li::before { content: "–"; position: absolute; left: 0; color: var(--sk, var(--orange)); font-weight: 800; }
 
   /* Two-col layout */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -166,15 +166,15 @@
       <div class="skills-box" style="margin-top:10px;">
         <div class="skills-label">Nine skill areas under the lens:</div>
         <ul>
-          <li>Learning strategy &amp; design thinking</li>
-          <li>Content development</li>
-          <li>Facilitation and delivery</li>
-          <li>Learning technology</li>
-          <li>AI tools and automation</li>
-          <li>Data analysis and reporting</li>
-          <li>Storytelling and narrative design</li>
-          <li>Stakeholder influence &amp; strategic communication</li>
-          <li>Change management &amp; org development</li>
+          <li style="--sk:#831A78">Learning strategy &amp; design thinking</li>
+          <li style="--sk:#B42318">Content development</li>
+          <li style="--sk:#2DBA8C">Facilitation and delivery</li>
+          <li style="--sk:#378ADD">Learning technology</li>
+          <li style="--sk:#FF6E00">AI tools and automation</li>
+          <li style="--sk:#BA7517">Data analysis and reporting</li>
+          <li style="--sk:#E0529C">Storytelling and narrative design</li>
+          <li style="--sk:#3D52D5">Stakeholder influence &amp; strategic communication</li>
+          <li style="--sk:#0F6E56">Change management &amp; org development</li>
         </ul>
       </div>
     </div>
